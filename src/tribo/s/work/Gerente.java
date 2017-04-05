@@ -1,5 +1,4 @@
-
-package tribo.s.work;
+package tribo;
 
 public class Gerente extends Funcionario {
 
@@ -9,7 +8,22 @@ public class Gerente extends Funcionario {
 
     @Override
     public boolean getPermissaoVenda() {
+        return false;
+    }
+
+    @Override
+    public boolean getPermissaoRemoveFuncionario() {
         return true;
+    }
+
+    @Override
+    public boolean getPermissaoConsultaPreco() {
+        return false;
+    }
+
+    @Override
+    public boolean getPermissaoCadastraCliente() {
+        return false;
     }
 
     @Override
