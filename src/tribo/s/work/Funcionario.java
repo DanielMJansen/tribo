@@ -1,4 +1,4 @@
-package tribo.s.work;
+package tribo;
 
 public class Funcionario implements ControlaPermissao {
 
@@ -15,6 +15,21 @@ public class Funcionario implements ControlaPermissao {
 
     @Override
     public boolean getPermissaoVenda() {
+        return true;
+    }
+
+    @Override
+    public boolean getPermissaoCadastraCliente() {
+        return true;
+    }
+
+    @Override
+    public boolean getPermissaoRemoveFuncionario() {
+        return false;
+    }
+
+    @Override
+    public boolean getPermissaoConsultaPreco() {
         return true;
     }
 
