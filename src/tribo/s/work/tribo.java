@@ -1,7 +1,8 @@
-package tribo.s.work;
+package tribo;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class tribo {
 
@@ -34,107 +35,115 @@ public class tribo {
     public static void main(String[] args) {
         tribo x = new tribo();
         x.montaListaFuncionarios();
+        Scanner leia = new Scanner(System.in);
         Funcionario usuario = x.autenticaFuncionario();
         while (usuario == null) {
             System.out.println("Funcionario e/ou senha não existem :(");
             usuario = x.autenticaFuncionario();
         }
+
         System.out.println("O que você deseja fazer? " + usuario.getLogin());
         int escolha = 0;
         do {
-            //chamada da permissão para cadastrar produtos            
-            if (usuario.getPermissaoCadastra()) {
-                System.out.println("1 - Cadastrar produto.");
-            }
-            //chamada da permissão para cadastrar clientes com receita          
-            if (usuario.getPermissaoCadastraCliente()) {
-                System.out.println("2 - Cadastrar cliente.");
-            }
-            //chamada da permissão para remover produtos          
-            if (usuario.getPermissaoRemove()) {
-                System.out.println("3 - Remover produtos.");
-            }
-            //chamada da permissão para cadastrar funcionário/gerente
-            if (usuario.getPermissaoCriaLogin()) {
-                System.out.println("4 - Criar login de novo funcionário/gerente.");
-            }
-            //chamada da permissão para remover funcionários          
-            if (usuario.getPermissaoRemoveFuncionario()) {
-                System.out.println("5 - Remover funcionário.");
-            }
-            //chamada da permissão para vender produtos
-            if (usuario.getPermissaoVenda()) {
-                System.out.println("6 - Vender produto.");
-            }
-            //chamada da permissão para consultar preço do produto      
-            if (usuario.getPermissaoConsultaPreco()) {
-                System.out.println("7 - Consultar preço de produto.");
-            }
-            System.out.println("8 - Sair do programa.");
-            Scanner teclado = new Scanner(System.in);
-            System.out.println("O que você deseja fazer? " + usuario.getLogin());
-            escolha = teclado.nextInt();
-     
-            switch (escolha) {
-            case 1: {
-                if (usuario.getPermissaoCadastra())  {
-                    System.out.println("Cadastrando produto.");
-                } else {
-                    System.out.println("Você não tem permissão para cadastrar produto.");
+            try {
+                leia = new Scanner(System.in);
+                //chamada da permissão para cadastrar produtos            
+                if (usuario.getPermissaoCadastra()) {
+                    System.out.println("1 - Cadastrar produto.");
                 }
-                break;
-            }
-            case 2: {
+                //chamada da permissão para cadastrar clientes com receita          
                 if (usuario.getPermissaoCadastraCliente()) {
-                    System.out.println("Cadastrando cliente.");
-                } else {
-                    System.out.println("Você não tem permissão para cadastrar cliente.");
+                    System.out.println("2 - Cadastrar cliente.");
                 }
-                break;
-            }
-            case 3: {
+                //chamada da permissão para remover produtos          
                 if (usuario.getPermissaoRemove()) {
-                    System.out.println("Removendo produto.");
-                } else {
-                    System.out.println("Você não tem permissão para remover produto.");
+                    System.out.println("3 - Remover produtos.");
                 }
-                break;
-            }
-            case 4: {
+                //chamada da permissão para cadastrar funcionário/gerente
                 if (usuario.getPermissaoCriaLogin()) {
-                    System.out.println("Criando login para funcionário/gerente.");
-                } else {
-                    System.out.println("Você não tem permissão para criar login.");
+                    System.out.println("4 - Criar login de novo funcionário/gerente.");
                 }
-                break;
-            }
-            case 5: {
+                //chamada da permissão para remover funcionários          
                 if (usuario.getPermissaoRemoveFuncionario()) {
-                    System.out.println("Removendo funcionário/gerente.");
-                } else {
-                    System.out.println("Você não tem permissão para remover funcionário e ou gerente.");
+                    System.out.println("5 - Remover funcionário.");
                 }
-                break;
-            }
-            case 6: {
+                //chamada da permissão para vender produtos
                 if (usuario.getPermissaoVenda()) {
-                    System.out.println("Vendendo produto.");
-                } else {
-                    System.out.println("Você não tem permissão para vender produto.");
+                    System.out.println("6 - Vender produto.");
                 }
-                break;
-            }
-            case 7: {
+                //chamada da permissão para consultar preço do produto      
                 if (usuario.getPermissaoConsultaPreco()) {
-                    System.out.println("Consultando preços.");
-                } else {
-                    System.out.println("Você não tem permissão para consultar preços.");
+                    System.out.println("7 - Consultar preço de produto.");
                 }
-                break;
+                System.out.println("8 - Sair do programa.");
+                escolha = leia.nextInt();
+            } catch (InputMismatchException e) {
+                System.err.println("Você digitou algo incompatível."
+                        + "Tente usando um dos números da lista:");
+                //leia.nextInt();
             }
-        }
-    }
-    while (escolha!= 8);
+
+            switch (escolha) {
+                case 1: {
+                    if (usuario.getPermissaoCadastra()) {
+                        System.out.println("Cadastrando produto.");
+                        
+                    } else {
+                        System.out.println("Você não tem permissão para cadastrar produto.");
+                    }
+                    break;
+                }
+                case 2: {
+                    if (usuario.getPermissaoCadastraCliente()) {
+                        System.out.println("Cadastrando cliente.");
+                    } else {
+                        System.out.println("Você não tem permissão para cadastrar cliente.");
+                    }
+                    break;
+                }
+                case 3: {
+                    if (usuario.getPermissaoRemove()) {
+                        System.out.println("Removendo produto.");
+                    } else {
+                        System.out.println("Você não tem permissão para remover produto.");
+                    }
+                    break;
+                }
+                case 4: {
+                    if (usuario.getPermissaoCriaLogin()) {
+                        System.out.println("Criando login para funcionário/gerente.");
+                    } else {
+                        System.out.println("Você não tem permissão para criar login.");
+                    }
+                    break;
+                }
+                case 5: {
+                    if (usuario.getPermissaoRemoveFuncionario()) {
+                        System.out.println("Removendo funcionário/gerente.");
+                    } else {
+                        System.out.println("Você não tem permissão para remover funcionário e ou gerente.");
+                    }
+                    break;
+                }
+                case 6: {
+                    if (usuario.getPermissaoVenda()) {
+                        System.out.println("Vendendo produto.");
+                    } else {
+                        System.out.println("Você não tem permissão para vender produto.");
+                    }
+                    break;
+                }
+                case 7: {
+                    if (usuario.getPermissaoConsultaPreco()) {
+                        System.out.println("Consultando preços.");
+                    } else {
+                        System.out.println("Você não tem permissão para consultar preços.");
+                    }
+                    break;
+                }
+            }
+
+        } while (escolha != 8);
+
     }
 }
-
