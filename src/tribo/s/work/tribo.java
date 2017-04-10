@@ -82,68 +82,70 @@ public class tribo {
                         + "Tente usando um dos números da lista:");
                 //leia.nextInt();
             }
-
-            switch (escolha) {
-                case 1: {
-                    if (usuario.getPermissaoCadastra()) {
-                        System.out.println("Cadastrando produto.");
-                        
-                    } else {
-                        System.out.println("Você não tem permissão para cadastrar produto.");
-                    }
-                    break;
-                }
-                case 2: {
-                    if (usuario.getPermissaoCadastraCliente()) {
-                        System.out.println("Cadastrando cliente.");
-                    } else {
-                        System.out.println("Você não tem permissão para cadastrar cliente.");
-                    }
-                    break;
-                }
-                case 3: {
-                    if (usuario.getPermissaoRemove()) {
-                        System.out.println("Removendo produto.");
-                    } else {
-                        System.out.println("Você não tem permissão para remover produto.");
-                    }
-                    break;
-                }
-                case 4: {
-                    if (usuario.getPermissaoCriaLogin()) {
-                        System.out.println("Criando login para funcionário/gerente.");
-                    } else {
-                        System.out.println("Você não tem permissão para criar login.");
-                    }
-                    break;
-                }
-                case 5: {
-                    if (usuario.getPermissaoRemoveFuncionario()) {
-                        System.out.println("Removendo funcionário/gerente.");
-                    } else {
-                        System.out.println("Você não tem permissão para remover funcionário e ou gerente.");
-                    }
-                    break;
-                }
-                case 6: {
-                    if (usuario.getPermissaoVenda()) {
-                        System.out.println("Vendendo produto.");
-                    } else {
-                        System.out.println("Você não tem permissão para vender produto.");
-                    }
-                    break;
-                }
-                case 7: {
-                    if (usuario.getPermissaoConsultaPreco()) {
-                        System.out.println("Consultando preços.");
-                    } else {
-                        System.out.println("Você não tem permissão para consultar preços.");
-                    }
-                    break;
-                }
+            if (escolha < 1 || escolha > 8) {
+                System.out.println("O valor informado está fora da faixa de números, escolha 1 à 8.");
             }
+                switch (escolha) {
+                    case 1: {
+                        if (usuario.getPermissaoCadastra()) {
+                            System.out.println("Cadastrando produto.");
 
-        } while (escolha != 8);
+                        } else {
+                            System.out.println("Você não tem permissão para cadastrar produto.");
+                        }
+                        break;
+                    }
+                    case 2: {
+                        if (usuario.getPermissaoCadastraCliente()) {
+                            System.out.println("Cadastrando cliente.");
+                        } else {
+                            System.out.println("Você não tem permissão para cadastrar cliente.");
+                        }
+                        break;
+                    }
+                    case 3: {
+                        if (usuario.getPermissaoRemove()) {
+                            System.out.println("Removendo produto.");
+                        } else {
+                            System.out.println("Você não tem permissão para remover produto.");
+                        }
+                        break;
+                    }
+                    case 4: {
+                        if (usuario.getPermissaoCriaLogin()) {
+                            System.out.println("Criando login para funcionário/gerente.");
+                        } else {
+                            System.out.println("Você não tem permissão para criar login.");
+                        }
+                        break;
+                    }
+                    case 5: {
+                        if (usuario.getPermissaoRemoveFuncionario()) {
+                            System.out.println("Removendo funcionário/gerente.");
+                        } else {
+                            System.out.println("Você não tem permissão para remover funcionário e ou gerente.");
+                        }
+                        break;
+                    }
+                    case 6: {
+                        if (usuario.getPermissaoVenda()) {
+                            System.out.println("Vendendo produto.");
+                        } else {
+                            System.out.println("Você não tem permissão para vender produto.");
+                        }
+                        break;
+                    }
+                    case 7: {
+                        if (usuario.getPermissaoConsultaPreco()) {
+                            System.out.println("Consultando preços.");
+                        } else {
+                            System.out.println("Você não tem permissão para consultar preços.");
+                        }
+                        break;
+                    }
+                }
 
+            }
+            while (escolha != 8);
+        }
     }
-}
