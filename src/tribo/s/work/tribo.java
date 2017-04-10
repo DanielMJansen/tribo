@@ -45,8 +45,7 @@ public class tribo {
         System.out.println("O que você deseja fazer? " + usuario.getLogin());
         int escolha = 0;
         do {
-            try {
-                leia = new Scanner(System.in);
+            try {                
                 //chamada da permissão para cadastrar produtos            
                 if (usuario.getPermissaoCadastra()) {
                     System.out.println("1 - Cadastrar produto.");
@@ -76,9 +75,10 @@ public class tribo {
                     System.out.println("7 - Consultar preço de produto.");
                 }
                 System.out.println("8 - Sair do programa.");
-                escolha = leia.nextInt();
+                
+                escolha = new Scanner(System.in).nextInt();
             } catch (InputMismatchException e) {
-                System.err.println("Você digitou algo incompatível."
+                System.out.println("Você digitou algo incompatível."
                         + "Tente usando um dos números da lista:");
                 //leia.nextInt();
             }
@@ -148,4 +148,5 @@ public class tribo {
             }
             while (escolha != 8);
         }
+    
     }
