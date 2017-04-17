@@ -4,24 +4,52 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Produto {
-public String nome;
-public Float preco;
-public int codigo;
-public boolean vendacontrolada;
-String[] produtos = new String[300];
-Scanner leia = new Scanner(System.in);
 
-public String CadastraProduto(){ 
-    System.out.println("Qual o nome do produto? (diferente de vazio).");   
-    nome = leia.nextLine();
-    System.out.println("Qual o preço do produto? (maior que 0).");
-    preco = leia.nextFloat();
-    System.out.println("Qual o código do produto? (diferente de vazio).");
-    codigo = leia.nextInt();
-    System.out.println("Se for medicamento, é necessário receita?");
-    vendacontrolada = leia.nextBoolean();
-    
-    
-    
-}   
+    private String nome, codigo;
+    private Float preco;
+    private boolean vendacontrolada;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Float preco) {
+        this.preco = preco;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public boolean isVendacontrolada() {
+        return vendacontrolada;
+    }
+
+    public void setVendacontrolada(boolean vendacontrolada) {
+        this.vendacontrolada = vendacontrolada;
+    }
+
+    public void CadastraProduto(ArrayList<Produto> produtos) {
+
+        nome = Util.pedeStringNaoVazia("Qual o nome do produto? (diferente de vazio).");
+        preco = Util.PedePrecoMaiorQueZero("Qual o preço do produto? (maior que 0).");
+        codigo = Util.pedeStringNaoVazia("Qual o código do produto? (diferente de vazio).");
+        System.out.println("Se for medicamento, é necessário receita?");
+        vendacontrolada = new Scanner(System.in).nextBoolean();
+        produtos.add(this);
+        System.out.println("Produto cadastrado com sucesso.");
+    }
+
 }
