@@ -6,17 +6,15 @@ import java.util.InputMismatchException;
 
 public class tribo {
 
-    private ArrayList<Funcionario> funcionarios;
+    private static ArrayList<Funcionario> funcionarios = new ArrayList();
     private ArrayList<Produto> produtos = new ArrayList();
     private ArrayList<Cliente> clientes = new ArrayList();
 
     void montaListaFuncionarios() {
-        funcionarios = new ArrayList();
-        funcionarios.add(new Funcionario("usuario1", "senha1"));
-        funcionarios.add(new Funcionario("usuario2", "senha2"));
-        funcionarios.add(new Funcionario("usuario3", "senha3"));
-        funcionarios.add(new Gerente("admin1", "admin1"));
-
+        funcionarios.add(new Funcionario("bob", "esponja"));
+        funcionarios.add(new Gerente("Duda", "1"));
+        funcionarios.add(new Gerente("Dani", "2"));
+        funcionarios.add(new Gerente("Nath", "3"));
     }
 
     Funcionario autenticaFuncionario() {
@@ -116,6 +114,10 @@ public class tribo {
                 }
                 case 4: {
                     if (usuario.getPermissaoCriaLogin()) {
+                        // cast?
+                        if (Gerente.class.isInstance(usuario)) {
+                            ((Gerente) usuario).CadastraFuncionario(funcionarios);
+                        }
                         System.out.println("Criando login para funcionário/gerente.");
                     } else {
                         System.out.println("Você não tem permissão para criar login.");
