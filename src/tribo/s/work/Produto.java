@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 public class Produto {
 
+    static int size() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private String nome, codigo;
     private Float preco;
     private boolean vendacontrolada;
@@ -46,10 +50,11 @@ public class Produto {
         nome = Util.pedeStringNaoVazia("Qual o nome do produto? (diferente de vazio).");
         preco = Util.PedePrecoMaiorQueZero("Qual o preço do produto? (maior que 0).");
         codigo = Util.pedeStringNaoVazia("Qual o código do produto? (diferente de vazio).");
-        System.out.println("Se for medicamento, é necessário receita?");
+        System.out.println("Se for medicamento, é necessário receita? Digite true para sim e false para não");
         vendacontrolada = new Scanner(System.in).nextBoolean();
         produtos.add(this);
         System.out.println("Produto cadastrado com sucesso.");
     }
 
 }
+
