@@ -21,6 +21,12 @@ public class Util {
         } while (preco <= 0);
         return preco;
     }
-    
-    
+
+    static int pedeCodigo(String mensagem) {
+        int codigo = 0;
+        System.out.println(mensagem);
+        codigo = new Scanner(System.in).nextInt();
+        return codigo;
+
+    }
 }
